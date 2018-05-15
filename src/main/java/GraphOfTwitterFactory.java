@@ -21,19 +21,20 @@ import java.io.IOException;
 
 public class GraphOfTwitterFactory {
     public static void main(String[] args) throws IOException {
-        String path = args[0];
+        String config = args[0];
 
-        final JanusGraph graph = JanusGraphFactory.build()
-                .set("storage.backend", "hbase")
-                .set("storage.hostname", "10.16.6.21,10.16.6.22,10.16.6.23,10.16.6.24")
-                .set("schema.default", "none")
-                .set("storage.username", "tcolloca")
-                .set("storage.password", "tcolloca")
-                .set("index.search.backend", "elasticsearch")
-                .set("index.search.hostname", "elasticsearch")
-                .open();
+        final JanusGraph graph = JanusGraphFactory.open(config);
+                //.set("storage.backend", "hbase")
+                //.set("storage.hostname", "10.16.6.21,10.16.6.22,10.16.6.23,10.16.6.24")
+                //.set("schema.default", "none")
+                //.set("storage.username", "tcolloca")
+                //.set("storage.password", "tcolloca")
+                //.set("index.search.backend", "elasticsearch")
+                //.set("index.search.hostname", "elasticsearch")
+                //.open();
 
         buildSchema(graph);
+        System.out.println("Don't know what happened, but it worked");
     }
 
     private static void buildSchema(final JanusGraph graph) {

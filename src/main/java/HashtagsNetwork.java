@@ -66,6 +66,8 @@ public class HashtagsNetwork {
                 hash_graph.addVertex(T.id, hashtags.get(1), T.label, "hashtag",
                         "tag", hashtags.get(1));
             }
+            //System.out.println(hashtags.get(0) + ":" + hashtags.get(1));
+            System.out.println(hash_g.E().groupCount().by(T.label).toList());
 
             hash_g.V().has("hashtag", "tag", hashtags.get(0)).as("h1").
                     V().has("hashtag", "tag", hashtags.get(1)).as("h2").
