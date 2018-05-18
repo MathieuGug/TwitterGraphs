@@ -49,19 +49,6 @@
             <version>${log4j.version}</version>
         </dependency>
 
-        <!-- HBase dependencies -->
-        <dependency>
-            <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase-client</artifactId>
-            <version>1.2.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase</artifactId>
-            <version>1.2.6</version>
-            <type>pom</type>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.janusgraph/janusgraph-core -->
         <dependency>
             <groupId>org.janusgraph</groupId>
@@ -74,28 +61,6 @@
             <artifactId>janusgraph-hbase</artifactId>
             <version>0.2.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.janusgraph/janusgraph-hadoop -->
-        <dependency>
-            <groupId>org.janusgraph</groupId>
-            <artifactId>janusgraph-hadoop</artifactId>
-            <version>0.2.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.janusgraph/janusgraph-es -->
-        <dependency>
-            <groupId>org.janusgraph</groupId>
-            <artifactId>janusgraph-es</artifactId>
-            <version>0.2.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch -->
-        <dependency>
-            <groupId>org.elasticsearch</groupId>
-            <artifactId>elasticsearch</artifactId>
-            <version>6.2.4</version>
-        </dependency>
-
-
 
     </dependencies>
 

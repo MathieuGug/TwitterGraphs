@@ -39,10 +39,11 @@ public class RetweetsNetwork {
 
         GraphTraversalSource g = tg.traversal();
 
+        // A map [v1, v2] : nb_retweets
         Map<?, Long> nb_retweets = g.V().hasLabel("user").as("u1").
                 out().out("RETWEETED_STATUS").
                 in("POSTED").as("u2").
-                select("u1", "u2").by("screen_name").
+                select("u1", "u2").//by("screen_name").
                 groupCount().by(Column.values).next();
 
         TinkerGraph rt = TinkerGraph.open();
@@ -52,25 +53,31 @@ public class RetweetsNetwork {
             ArrayList users = (ArrayList) entry.getKey();
             Long weight = entry.getValue();
 
+            Vertex user1 = (Vertex) users.get(0);
+            Vertex user2 = (Vertex) users.get(1);
+
             // Corresponding users
-            GraphTraversal<Vertex, Vertex> u1 = rt_g.V().has("user", "screen_name", users.get(0));
-            GraphTraversal<Vertex, Vertex> u2 = rt_g.V().has("user", "screen_name", users.get(1));
+            GraphTraversal<Vertex, Vertex> u1 = rt_g.V(user1.value("screen_name"));
+            GraphTraversal<Vertex, Vertex> u2 = rt_g.V(user2.value("screen_name"));
 
             //If first user does not exist yet
             if (!u1.hasNext()) {
-                System.out.println("user " + users.get(0) + " created");
-                rt_g.addV("user").property("screen_name", users.get(0)).iterate();
+                //System.out.println("user " + users.get(0) + " created");
+                rt.addVertex(T.label, "user", T.id, user1.values("screen_name").next(),
+                        "followers_count", user1.values("followers_count").next(),
+                        "statuses_count", user1.values("statuses_count").next());
             }
 
             if (!u2.hasNext()) {
-                System.out.println("user " + users.get(1) + " created");
-                rt_g.addV("user").property("screen_name", users.get(1)).iterate();
+                //System.out.println("user " + users.get(1) + " created");
+                //System.out.println(user2.value("followers_count"));
+                rt.addVertex(T.label, "user", T.id, user2.values("screen_name").next(),
+                        "followers_count", user2.values("followers_count").next(),
+                        "statuses_count", user2.values("statuses_count").next());
             }
 
-            System.out.println(rt_g.V().groupCount().by(T.label).toList());
-
-            rt_g.V().has("user", "screen_name", users.get(0)).as("u1").
-                    V().has("user", "screen_name", users.get(1)).as("u2").
+            rt_g.V(user1.value("screen_name")).as("u1").
+                    V(user2.value("screen_name")).as("u2").
                     addE("RETWEETED_USER").property("weight", weight).
                     from("u1").to("u2").
                     iterate();

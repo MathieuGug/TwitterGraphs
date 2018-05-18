@@ -1,4 +1,3 @@
-import com.google.common.base.Preconditions;
 import org.janusgraph.core.EdgeLabel;
 import org.janusgraph.core.Multiplicity;
 import org.janusgraph.core.PropertyKey;
@@ -9,7 +8,6 @@ import org.janusgraph.core.attribute.Geoshape;
 import org.janusgraph.core.schema.ConsistencyModifier;
 import org.janusgraph.core.schema.JanusGraphIndex;
 import org.janusgraph.core.schema.JanusGraphManagement;
-import org.janusgraph.core.schema.JanusGraphSchemaElement;
 import org.janusgraph.graphdb.database.StandardJanusGraph;
 import org.apache.tinkerpop.gremlin.process.traversal.Order;
 import org.apache.tinkerpop.gremlin.structure.Direction;
@@ -31,7 +29,7 @@ public class GraphOfTheGodsFactory {
                     "use GraphOfTheGodsFactory.loadWithoutMixedIndex(graph,true) to load without the use of an " +
                     "indexing backend.";
 
-    public static JanusGraph create(final String directory) {
+    public static JanusGraph create() {
         JanusGraphFactory.Builder config = JanusGraphFactory.build();
         config.set("storage.backend", "hbase");
         //config.set("storage.directory", directory);
@@ -55,11 +53,6 @@ public class GraphOfTheGodsFactory {
     }
 
     public static void load(final JanusGraph graph, String mixedIndexName, boolean uniqueNameCompositeIndex) {
-        if (graph instanceof StandardJanusGraph) {
-            Preconditions.checkState(mixedIndexNullOrExists((StandardJanusGraph)graph, mixedIndexName),
-                    ERR_NO_INDEXING_BACKEND, mixedIndexName);
-        }
-
         //Create Schema
         JanusGraphManagement management = graph.openManagement();
         final PropertyKey name = management.makePropertyKey("name").dataType(String.class).make();
@@ -148,7 +141,7 @@ public class GraphOfTheGodsFactory {
      * <p/>
      * This method may call {@link System#exit(int)} if it encounters an error, such as
      * failure to parse its arguments.  Only use this method when executing main from
-     * a command line.  Use one of the other methods on this class ({@link #create(String)}
+     * a command line.  Use one of the other methods on this class ({@link #create()}
      * or {@link #load(org.janusgraph.core.JanusGraph)}) when calling from
      * an enclosing application.
      *
@@ -160,7 +153,8 @@ public class GraphOfTheGodsFactory {
             System.exit(1);
         }
 
-        JanusGraph g = JanusGraphFactory.open(args[0]);
+        //JanusGraph g = JanusGraphFactory.open(args[0]);
+        JanusGraph g = create();
         load(g);
         g.close();
     }

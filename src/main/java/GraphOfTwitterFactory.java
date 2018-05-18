@@ -20,24 +20,25 @@ import java.util.Date;
 import java.io.IOException;
 
 public class GraphOfTwitterFactory {
-    public static void main(String[] args) throws IOException {
-        String config = args[0];
+    private static final String INDEX_NAME = "search";
+    private static final String ERR_NO_INDEXING_BACKEND =
+            "The indexing backend with name \"%s\" is not defined. Specify an existing indexing backend or " +
+                    "use GraphOfTheGodsFactory.loadWithoutMixedIndex(graph,true) to load without the use of an " +
+                    "indexing backend.";
 
-        final JanusGraph graph = JanusGraphFactory.open(config);
-                //.set("storage.backend", "hbase")
-                //.set("storage.hostname", "10.16.6.21,10.16.6.22,10.16.6.23,10.16.6.24")
-                //.set("schema.default", "none")
-                //.set("storage.username", "tcolloca")
-                //.set("storage.password", "tcolloca")
-                //.set("index.search.backend", "elasticsearch")
-                //.set("index.search.hostname", "elasticsearch")
-                //.open();
-
-        buildSchema(graph);
-        System.out.println("Don't know what happened, but it worked");
+    public static void loadWithoutMixedIndex(final JanusGraph graph, boolean uniqueNameCompositeIndex) {
+        load(graph, null, uniqueNameCompositeIndex);
     }
 
-    private static void buildSchema(final JanusGraph graph) {
+    private static void load(final JanusGraph graph) {
+        load(graph, INDEX_NAME, true);
+    }
+
+    private static boolean mixedIndexNullOrExists(StandardJanusGraph graph, String indexName) {
+        return indexName == null || graph.getIndexSerializer().containsIndex(indexName);
+    }
+
+    private static void load(final JanusGraph graph, String mixedIndexName, boolean uniqueNameCompositeIndex) {
         JanusGraphManagement mgmt = graph.openManagement();
 
         /* USER */
@@ -80,14 +81,17 @@ public class GraphOfTwitterFactory {
         mgmt.buildIndex("byStatusesAtTime", Vertex.class).addKey(statuses_at_time).buildMixedIndex("search");
         mgmt.buildIndex("byListedAtTime", Vertex.class).addKey(listed_at_time).buildMixedIndex("search");
 
+        /* PERSON, ORGANIZATION, LOCATION */
         addVertexLabel(mgmt, "person");
         addVertexLabel(mgmt, "organization");
         addVertexLabel(mgmt, "location");
 
+        /* HASHTAG */
         addVertexLabel(mgmt, "hashtag");
         PropertyKey tag = addPropertyKey(mgmt,"tag", String.class, Cardinality.SINGLE);
         mgmt.buildIndex("byHashtag", Vertex.class).addKey(tag).buildMixedIndex("search");
 
+        /* URL */
         addVertexLabel(mgmt, "url");
         PropertyKey expanded_url = addPropertyKey(mgmt,"expanded_url", String.class, Cardinality.SINGLE);
         PropertyKey domain = addPropertyKey(mgmt,"domain", String.class, Cardinality.SINGLE);
@@ -95,10 +99,11 @@ public class GraphOfTwitterFactory {
         mgmt.buildIndex("byExpandedUrl", Vertex.class).addKey(expanded_url).buildMixedIndex("search");
         mgmt.buildIndex("byDomain", Vertex.class).addKey(domain).buildCompositeIndex();
 
+        /* SOURCE */
         addVertexLabel(mgmt, "source");
         addPropertyKey(mgmt,"name", String.class, Cardinality.SINGLE);
 
-        /* Edges */
+        /* EDGES */
         addEdgeLabel(mgmt, "RETWEETED_STATUS");
         addEdgeLabel(mgmt, "QUOTED_STATUS");
         addEdgeLabel(mgmt, "IN_REPLY_TO");
@@ -130,5 +135,26 @@ public class GraphOfTwitterFactory {
             return null;
 
         return mgmt.makePropertyKey(label).dataType(dataType).cardinality(cardinality).make();
+    }
+    public static JanusGraph create() {
+        final JanusGraphFactory.Builder config = JanusGraphFactory.build();
+        config.set("storage.backend", "hbase");
+        config.set("storage.hbase.table", "janusgraph_tweets2");
+        config.set("index." + INDEX_NAME + ".backend", "elasticsearch");
+
+        JanusGraph graph = config.open();
+        GraphOfTwitterFactory.load(graph);
+        return graph;
+    }
+
+    public static void main(String[] args) throws IOException {
+        if (null == args || 1 != args.length) {
+            System.out.println(args[0]);
+            System.err.println("Usage: GraphOfTwitterFactory <janusgraph-config-file>");
+            System.exit(1);
+        }
+
+        JanusGraph graph = create();
+        graph.close();
     }
 }

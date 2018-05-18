@@ -4,6 +4,7 @@ import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSo
 import org.apache.tinkerpop.gremlin.process.traversal.P;
 import org.apache.tinkerpop.gremlin.process.traversal.Order;
 import org.apache.tinkerpop.gremlin.structure.Column;
+import org.apache.tinkerpop.gremlin.structure.Edge;
 import org.apache.tinkerpop.gremlin.structure.T;
 import org.apache.tinkerpop.gremlin.structure.Vertex;
 import org.apache.tinkerpop.gremlin.structure.io.IoCore;
@@ -11,7 +12,6 @@ import org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph;
 
 import java.util.ArrayList;
 import java.util.Map;
-
 import java.io.IOException;
 
 public class HashtagsNetwork {
@@ -47,27 +47,15 @@ public class HashtagsNetwork {
 
             //If first user does not exist yet
             if (!h1.hasNext()) {
-                //System.out.println("hashtag " + hashtags.get(0) + " created");
-                //hash_g.addV("hashtag").
-//                        property("tag", hashtags.get(0),
-//                        "n", g.V().has("hashtag", "tag", hashtags.get(0)).
-//                                        in("HAS_TAG").count().next()).
-//                        iterate();
                 hash_graph.addVertex(T.id, hashtags.get(0), T.label, "hashtag",
                         "tag", hashtags.get(0));
             }
 
             if (!h2.hasNext()) {
-                //System.out.println("hashtag " + hashtags.get(1) + " created");
-//                hash_g.addV("hashtag").property("tag", hashtags.get(1),
-//                        "n", g.V().has("hashtag", "tag", hashtags.get(1)).
-//                                in("HAS_TAG").count().next()).
-//                        iterate();
                 hash_graph.addVertex(T.id, hashtags.get(1), T.label, "hashtag",
                         "tag", hashtags.get(1));
             }
             //System.out.println(hashtags.get(0) + ":" + hashtags.get(1));
-            System.out.println(hash_g.E().groupCount().by(T.label).toList());
 
             hash_g.V().has("hashtag", "tag", hashtags.get(0)).as("h1").
                     V().has("hashtag", "tag", hashtags.get(1)).as("h2").
