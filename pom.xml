@@ -11,11 +11,34 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <flink.version>1.2.1</flink.version>
+        <hbase.version>1.2.6</hbase.version>
+        <hgraphdb.version>1.0.3</hgraphdb.version>
+        <tinkerpop.version>3.3.1</tinkerpop.version>
+        <janusgraph.version>0.2.0</janusgraph.version>
+        <stanford.corenlp.version>3.9.1</stanford.corenlp.version>
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
     </properties>
 
     <dependencies>
+        <!-- HBase dependencies -->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase</artifactId>
+            <version>${hbase.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>io.hgraphdb</groupId>
+            <artifactId>hgraphdb</artifactId>
+            <version>${hgraphdb.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-java</artifactId>
@@ -24,18 +47,18 @@
         <dependency>
             <groupId>org.apache.tinkerpop</groupId>
             <artifactId>gremlin-core</artifactId>
-            <version>3.3.1</version>
+            <version>${tinkerpop.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tinkerpop</groupId>
             <artifactId>tinkergraph-gremlin</artifactId>
-            <version>3.3.2</version>
+            <version>${tinkerpop.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-groovy -->
         <dependency>
             <groupId>org.apache.tinkerpop</groupId>
             <artifactId>gremlin-groovy</artifactId>
-            <version>3.3.1</version>
+            <version>${tinkerpop.version}</version>
         </dependency>
 
         <dependency>
@@ -53,15 +76,38 @@
         <dependency>
             <groupId>org.janusgraph</groupId>
             <artifactId>janusgraph-core</artifactId>
-            <version>0.2.0</version>
+            <version>${janusgraph.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.janusgraph/janusgraph-hbase -->
         <dependency>
             <groupId>org.janusgraph</groupId>
             <artifactId>janusgraph-hbase</artifactId>
-            <version>0.2.0</version>
+            <version>${janusgraph.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>${stanford.corenlp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>${stanford.corenlp.version}</version>
+            <classifier>models</classifier>
+        </dependency>
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>${stanford.corenlp.version}</version>
+            <classifier>models-french</classifier>
+        </dependency>
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>${stanford.corenlp.version}</version>
+            <classifier>models-english</classifier>
+        </dependency>
     </dependencies>
 
     <profiles>
