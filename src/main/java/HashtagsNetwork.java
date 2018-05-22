@@ -96,7 +96,7 @@ public class HashtagsNetwork {
         }
         try {
             hash_graph.io(IoCore.graphml()).writeGraph(OUTPUT_FILE);
-            System.out.println("Retweets network saved in " + OUTPUT_FILE);
+            System.out.println("Hashtags network saved in " + OUTPUT_FILE);
         } catch (IOException e) {
             System.out.println("File not found");
             System.exit(1);

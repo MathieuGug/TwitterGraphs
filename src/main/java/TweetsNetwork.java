@@ -41,10 +41,6 @@ public class TweetsNetwork {
         GraphTraversalSource g = tg.traversal();
         // On dates
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-//        Graph subg = (Graph) g.V().has("tweet", "created",
-//                P.inside(LocalDateTime.parse(from, formatter), LocalDateTime.parse(to, formatter))).
-//                        repeat(__.bothE().has(T.label, P.within("POSTED", "RETWEETED_STATUS")).subgraph("subGraph").inV()).times(2).
-//                cap("subGraph").next();
 
         // List of map with id, text and retweeted_status
         List<Map<String, Object>> tweets = g.V().has("tweet", "created",
@@ -55,13 +51,11 @@ public class TweetsNetwork {
                 by(__.coalesce(__.out("RETWEETED_STATUS").values("text"), __.constant("Not a retweet"))).
                 toList();
 
-        File output = new File("output.csv");
+        File output = new File(OUTPUT_FILE);
         FileWriter f0 = new FileWriter(output);
         f0.write("id;tweet;retweeted_status;hashtags\n");
 
         for (Map<String, Object> tweet : tweets) {
-            //System.out.println(tweet.get("hashtags").toString());
-            //System.out.println(tweet.get("id") + ":" + tweet.get("tweet") + ":" + tweet.get("retweeted_status"));
             String id = tweet.get("id").toString();
             String tw = tweet.get("tweet").toString().
                     replaceAll("\n", "").replaceAll(";", "");
@@ -74,13 +68,7 @@ public class TweetsNetwork {
 
         f0.flush();
         f0.close();
-        //System.out.println(subg.traversal().V().groupCount().by(T.label).toList());
-//        try {
-//            subg.io(IoCore.graphml()).writeGraph(OUTPUT_FILE);
-//            System.out.println("Tweets saved in " + OUTPUT_FILE);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
         tg.close();
     }
 }
