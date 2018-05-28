@@ -7,6 +7,7 @@ import org.janusgraph.core.JanusGraphTransaction;
 import org.janusgraph.core.attribute.Geoshape;
 import org.janusgraph.core.schema.ConsistencyModifier;
 import org.janusgraph.core.schema.JanusGraphIndex;
+
 import org.janusgraph.core.schema.JanusGraphManagement;
 import org.janusgraph.graphdb.database.StandardJanusGraph;
 import org.apache.tinkerpop.gremlin.process.traversal.Order;
@@ -32,8 +33,9 @@ public class GraphOfTheGodsFactory {
     public static JanusGraph create() {
         JanusGraphFactory.Builder config = JanusGraphFactory.build();
         config.set("storage.backend", "hbase");
+        config.set("storage.hbase.table", "j_gods");
         //config.set("storage.directory", directory);
-        config.set("index." + INDEX_NAME + ".backend", "elasticsearch");
+        config.set("index." + INDEX_NAME + ".backend", "solr");
 
         JanusGraph graph = config.open();
         GraphOfTheGodsFactory.load(graph);

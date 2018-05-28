@@ -16,6 +16,8 @@ import org.apache.tinkerpop.gremlin.structure.Edge;
 import org.apache.tinkerpop.gremlin.structure.T;
 import org.apache.tinkerpop.gremlin.structure.Vertex;
 
+import static org.janusgraph.diskstorage.es.ElasticSearchIndex.*;
+
 import java.util.Date;
 import java.io.IOException;
 
@@ -47,7 +49,7 @@ public class GraphOfTwitterFactory {
         PropertyKey id = addPropertyKey(mgmt, "id", Long.class, Cardinality.SINGLE);
         PropertyKey user_key = addPropertyKey(mgmt, "user_key", String.class, Cardinality.SINGLE);
         PropertyKey screen_name = addPropertyKey(mgmt, "screen_name", String.class, Cardinality.SINGLE);
-        PropertyKey created_at = addPropertyKey(mgmt,"created_at", Date.class, Cardinality.SINGLE);
+        PropertyKey created = addPropertyKey(mgmt,"created", Date.class, Cardinality.SINGLE);
         PropertyKey favourites_count = addPropertyKey(mgmt,"favourites_count", Integer.class, Cardinality.SINGLE);
         PropertyKey followers_count = addPropertyKey(mgmt,"followers_count", Integer.class, Cardinality.SINGLE);
         PropertyKey listed_count = addPropertyKey(mgmt,"listed_count", Integer.class, Cardinality.SINGLE);
@@ -61,7 +63,7 @@ public class GraphOfTwitterFactory {
         mgmt.buildIndex("byScreenNameUnique", Vertex.class).addKey(screen_name).unique().buildCompositeIndex();
         mgmt.buildIndex("byLocation", Vertex.class).addKey(location).buildCompositeIndex();
 
-        mgmt.buildIndex("byDate", Vertex.class).addKey(created_at).buildMixedIndex("search");
+        mgmt.buildIndex("byDate", Vertex.class).addKey(created).buildMixedIndex("search");
         mgmt.buildIndex("byFollowersCount", Vertex.class).addKey(followers_count).buildMixedIndex("search");
         mgmt.buildIndex("byFavouritesCount", Vertex.class).addKey(favourites_count).buildMixedIndex("search");
         mgmt.buildIndex("byStatusesCount", Vertex.class).addKey(statuses_count).buildMixedIndex("search");
@@ -136,13 +138,15 @@ public class GraphOfTwitterFactory {
 
         return mgmt.makePropertyKey(label).dataType(dataType).cardinality(cardinality).make();
     }
-    public static JanusGraph create() {
-        final JanusGraphFactory.Builder config = JanusGraphFactory.build();
-        config.set("storage.backend", "hbase");
-        config.set("storage.hbase.table", "janusgraph_tweets2");
-        config.set("index." + INDEX_NAME + ".backend", "elasticsearch");
+    public static JanusGraph create(String CONFIG_PATH) {
+        //final JanusGraphFactory.Builder config = JanusGraphFactory.open(CONFIG_PATH);
+//                build();
+//        config.set("storage.backend", "hbase");
+//        config.set("storage.hbase.table", "janusgraph_tweets2");
+//        config.set("index." + INDEX_NAME + ".backend", "elasticsearch");
 
-        JanusGraph graph = config.open();
+        //JanusGraph graph = config.open();
+        JanusGraph graph = JanusGraphFactory.open(CONFIG_PATH);
         GraphOfTwitterFactory.load(graph);
         return graph;
     }
@@ -154,7 +158,7 @@ public class GraphOfTwitterFactory {
             System.exit(1);
         }
 
-        JanusGraph graph = create();
+        JanusGraph graph = create(args[0]);
         graph.close();
     }
 }
