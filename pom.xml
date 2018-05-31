@@ -14,11 +14,13 @@
         <hbase.version>1.2.6</hbase.version>
         <hgraphdb.version>1.0.3</hgraphdb.version>
         <tinkerpop.version>3.3.1</tinkerpop.version>
-        <janusgraph.version>0.1.0</janusgraph.version>
+        <janusgraph.version>0.2.0</janusgraph.version>
         <stanford.corenlp.version>3.9.1</stanford.corenlp.version>
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
         <elasticsearch.version>6.2.4</elasticsearch.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -132,38 +134,4 @@
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <!-- Profile for packaging correct JAR files -->
-            <id>build-jar</id>
-
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-
-            <build>
-                <plugins>
-                    <!-- disable the exclusion rules -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-shade-plugin</artifactId>
-                        <version>2.4.1</version>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>shade</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactSet>
-                                        <excludes combine.self="override"></excludes>
-                                    </artifactSet>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>

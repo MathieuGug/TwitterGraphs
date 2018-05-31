@@ -2,18 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a83d9981-4796-4300-b979-b9253775ea79" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/HashtagsFrequencies.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GraphOfTheGodsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphOfTheGodsFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GraphOfTwitterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphOfTwitterFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RetweetsNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RetweetsNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GraphOfTheGodsFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphOfTheGodsFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GraphOfTwitterFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GraphOfTwitterFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/RetweetsNetwork.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/RetweetsNetwork.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HashtagsNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HashtagsNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GraphOfTheGodsFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GraphOfTwitterFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/HashtagsNetwork.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NERTweets.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NameThatEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NamedEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/RetweetsNetwork.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/TweetsNetwork.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/retweetsNetwork-1.0-SNAPSHOT.jar" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,8 +32,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="100" column="39" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
+            <state relative-caret-position="120">
+              <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -38,8 +41,8 @@
       <file leaf-file-name="HashtagsFrequencies.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/HashtagsFrequencies.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+            <state>
+              <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,8 +53,8 @@
       <file leaf-file-name="HashtagsNetwork.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/HashtagsNetwork.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="49" column="100" selection-start-line="48" selection-start-column="29" selection-end-line="49" selection-end-column="100" />
+            <state relative-caret-position="459">
+              <caret line="93" selection-start-line="93" selection-end-line="93" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,8 +137,8 @@
       <file leaf-file-name="GraphOfTheGodsFactory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GraphOfTheGodsFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="30" column="40" lean-forward="true" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+            <state relative-caret-position="433">
+              <caret line="155" column="9" selection-start-line="155" selection-start-column="9" selection-end-line="155" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -163,12 +166,12 @@
         <option value="$PROJECT_DIR$/src/main/java/NamedEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/NameThatEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/NERTweets.java" />
-        <option value="$PROJECT_DIR$/src/main/java/HashtagsNetwork.java" />
         <option value="$PROJECT_DIR$/src/main/java/HashtagsFrequencies.java" />
         <option value="$PROJECT_DIR$/src/main/java/TweetsNetwork.java" />
         <option value="$PROJECT_DIR$/src/main/java/RetweetsNetwork.java" />
         <option value="$PROJECT_DIR$/src/main/java/GraphOfTwitterFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/GraphOfTheGodsFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/HashtagsNetwork.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
@@ -220,6 +223,10 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="retweetsNetwork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -247,7 +254,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GraphOfTheGodsFactory">
+  <component name="RunManager" selected="Application.HashtagsNetwork">
     <configuration name="GraphOfTheGodsFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GraphOfTheGodsFactory" />
       <module name="retweetsNetwork" />
@@ -269,7 +276,7 @@
     <configuration name="HashtagsNetwork" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="HashtagsNetwork" />
       <module name="retweetsNetwork" />
-      <option name="PROGRAM_PARAMETERS" value="--output $PROJECT_DIR$/../graph_analysis/hashtags_macron.graphml --namespace tweets_graph3 --from &quot;2018-05-24 08:00&quot; --to &quot;2018-05-25 19:15&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="--output $PROJECT_DIR$/../graph_analysis/hashtags_mai.graphml --namespace tweets_graph3 --from &quot;2018-05-23 08:00&quot; --to &quot;2018-05-29 19:15&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="NERTweets" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -372,14 +379,14 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5005208" side_tool="true" weight="0.32879376" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50104165" side_tool="true" weight="0.32879376" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49947917" visible="true" weight="0.32879376" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49895832" weight="0.32879376" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.146875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.146875" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -779,26 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/HashtagsNetwork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="49" column="100" selection-start-line="48" selection-start-column="29" selection-end-line="49" selection-end-column="100" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/HashtagsFrequencies.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/TweetsNetwork.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -819,13 +806,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GraphOfTwitterFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-999">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/NERTweets.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
@@ -836,10 +816,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphOfTwitterFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-999">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphOfTheGodsFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="30" column="40" lean-forward="true" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+        <state relative-caret-position="433">
+          <caret line="155" column="9" selection-start-line="155" selection-start-column="9" selection-end-line="155" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/HashtagsNetwork.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/HashtagsFrequencies.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -848,8 +855,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="100" column="39" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
+        <state relative-caret-position="120">
+          <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
         </state>
       </provider>
     </entry>

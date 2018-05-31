@@ -43,7 +43,6 @@ public class HashtagsNetwork {
         HBaseGraph tg = HBaseGraph.open(cfg);
         GraphTraversalSource g = tg.traversal();
 
-
         // On dates
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         Graph subg = (Graph) g.V().has("tweet", "created",
